@@ -18,32 +18,27 @@
         .section-title { font-size: 1.1rem; font-weight: 800; color: #1e293b; margin-bottom: 16px; display: flex; align-items: center; border-bottom: 2px solid #f1f5f9; padding-bottom: 10px; }
         .section-title i { color: #3b82f6; margin-right: 8px; font-size: 1.2rem; }
 
-        /* 입력 폼 스타일 */
         .form-group { margin-bottom: 16px; }
         .form-label { display: block; font-size: 0.85rem; font-weight: 700; color: #64748b; margin-bottom: 6px; }
         .form-input { width: 100%; border: 1px solid #cbd5e1; border-radius: 8px; padding: 12px; font-size: 0.95rem; outline: none; transition: border-color 0.2s; }
         .form-input:focus { border-color: #3b82f6; box-shadow: 0 0 0 3px rgba(59,130,246,0.1); }
         
-        /* 레인지 슬라이더 */
         input[type=range] { -webkit-appearance: none; width: 100%; background: transparent; }
         input[type=range]::-webkit-slider-thumb { -webkit-appearance: none; height: 20px; width: 20px; border-radius: 50%; background: #3b82f6; cursor: pointer; margin-top: -8px; box-shadow: 0 2px 4px rgba(0,0,0,0.2); }
         input[type=range]::-webkit-slider-runnable-track { width: 100%; height: 6px; cursor: pointer; background: #e2e8f0; border-radius: 3px; }
         .range-labels { display: flex; justify-content: space-between; font-size: 0.75rem; color: #94a3b8; margin-top: 6px; font-weight: 600; }
 
-        /* 매트릭스 그리드 (2x2) */
         .matrix-container { display: grid; grid-template-columns: 1fr 1fr; grid-template-rows: 1fr 1fr; gap: 16px; min-height: 600px; }
         .matrix-quadrant { border-radius: 12px; padding: 16px; display: flex; flex-direction: column; overflow-y: auto; border: 2px solid transparent; }
         
-        /* 사분면 색상 테마 */
-        .quad-do { background-color: #fef2f2; border-color: #fecaca; } /* Red */
-        .quad-schedule { background-color: #eff6ff; border-color: #bfdbfe; } /* Blue */
-        .quad-delegate { background-color: #fefce8; border-color: #fef08a; } /* Yellow */
-        .quad-drop { background-color: #f8fafc; border-color: #e2e8f0; } /* Gray */
+        .quad-do { background-color: #fef2f2; border-color: #fecaca; } 
+        .quad-schedule { background-color: #eff6ff; border-color: #bfdbfe; } 
+        .quad-delegate { background-color: #fefce8; border-color: #fef08a; } 
+        .quad-drop { background-color: #f8fafc; border-color: #e2e8f0; } 
         
         .quad-title { font-size: 1.1rem; font-weight: 900; margin-bottom: 8px; display: flex; align-items: center; justify-content: space-between; padding-bottom: 8px; border-bottom: 1px solid rgba(0,0,0,0.05); }
         .quad-count { font-size: 0.8rem; background: rgba(0,0,0,0.1); padding: 2px 8px; rounded-full; }
 
-        /* 이슈 카드 */
         .issue-card { background: white; border-radius: 8px; padding: 12px; margin-bottom: 10px; box-shadow: 0 2px 4px rgba(0,0,0,0.03); border: 1px solid rgba(0,0,0,0.05); position: relative; animation: fadeIn 0.3s ease-in-out; }
         @keyframes fadeIn { from { opacity: 0; transform: translateY(5px); } to { opacity: 1; transform: translateY(0); } }
         .issue-category { font-size: 0.7rem; font-weight: 800; padding: 2px 6px; border-radius: 4px; display: inline-block; margin-bottom: 6px; }
@@ -52,7 +47,8 @@
         .delete-btn { position: absolute; top: 10px; right: 10px; color: #cbd5e1; cursor: pointer; transition: color 0.2s; }
         .delete-btn:hover { color: #ef4444; }
 
-        /* 카테고리 태그 색상 */
+        /* 🌟 업데이트된 카테고리 태그 색상 */
+        .cat-customer { background: #e0e7ff; color: #4f46e5; } /* 인디고: 고객 추가 */
         .cat-sales { background: #dbeafe; color: #1d4ed8; }
         .cat-product { background: #dcfce7; color: #15803d; }
         .cat-hr { background: #fce7f3; color: #be185d; }
@@ -87,6 +83,7 @@
                 <div class="form-group">
                     <label class="form-label">어떤 분야의 문제인가요?</label>
                     <select id="i-category" class="form-input bg-white cursor-pointer font-bold text-slate-700">
+                        <option value="customer">🤝 고객 / CS / 경험(CX)</option>
                         <option value="sales">💰 영업 / 마케팅 / 매출</option>
                         <option value="product">📦 제품 / 서비스 / 품질</option>
                         <option value="hr">👥 조직 / 인사 / 소통</option>
@@ -97,7 +94,7 @@
 
                 <div class="form-group">
                     <label class="form-label">구체적으로 어떤 문제인가요?</label>
-                    <textarea id="i-title" class="form-input h-[100px] resize-none" placeholder="예: 상세페이지 전환율이 낮아 광고비가 낭비되고 있음"></textarea>
+                    <textarea id="i-title" class="form-input h-[100px] resize-none" placeholder="예: 고객들의 배송 지연 불만(CS)이 주 30건 이상 발생 중"></textarea>
                 </div>
 
                 <div class="p-4 bg-slate-50 rounded-xl border border-slate-200 mb-6 mt-6">
@@ -175,7 +172,6 @@
     <div id="toast" class="fixed bottom-[-100px] left-1/2 transform -translate-x-1/2 bg-slate-800 text-white px-6 py-3 rounded-lg shadow-xl z-50 font-bold transition-all duration-300 opacity-0"></div>
 
     <script>
-        // 데이터 구조: id, title, category, impact, urgency, quad
         let issues = [];
 
         function showToast(msg) {
@@ -190,14 +186,13 @@
         }
 
         window.onload = () => {
-            const saved = localStorage.getItem('xray_issues');
+            const saved = localStorage.getItem('xray_issues_v2');
             if(saved) {
                 issues = JSON.parse(saved);
                 renderMatrix();
             }
         };
 
-        // 매트릭스 사분면 계산 로직 (1~5점 기준. 4 이상이면 High)
         function determineQuadrant(impact, urgency) {
             const isHighImpact = impact >= 4;
             const isHighUrgency = urgency >= 4;
@@ -208,8 +203,10 @@
             return 'drop';
         }
 
+        // 🌟 새로 추가된 고객 카테고리 로직 반영
         function getCategoryDetails(cat) {
             switch(cat) {
+                case 'customer': return { name: '고객/경험', class: 'cat-customer' };
                 case 'sales': return { name: '영업/매출', class: 'cat-sales' };
                 case 'product': return { name: '제품/품질', class: 'cat-product' };
                 case 'hr': return { name: '조직/인사', class: 'cat-hr' };
@@ -228,15 +225,11 @@
 
             const quad = determineQuadrant(impact, urgency);
 
-            const newIssue = {
-                id: Date.now(),
-                title, category, impact, urgency, quad
-            };
+            const newIssue = { id: Date.now(), title, category, impact, urgency, quad };
 
             issues.push(newIssue);
-            localStorage.setItem('xray_issues', JSON.stringify(issues));
+            localStorage.setItem('xray_issues_v2', JSON.stringify(issues));
 
-            // 입력창 비우기 (슬라이더는 중간값 유지)
             document.getElementById('i-title').value = '';
             
             renderMatrix();
@@ -245,12 +238,11 @@
 
         function removeIssue(id) {
             issues = issues.filter(issue => issue.id !== id);
-            localStorage.setItem('xray_issues', JSON.stringify(issues));
+            localStorage.setItem('xray_issues_v2', JSON.stringify(issues));
             renderMatrix();
         }
 
         function renderMatrix() {
-            // 구역 초기화
             document.getElementById('list-do').innerHTML = '';
             document.getElementById('list-schedule').innerHTML = '';
             document.getElementById('list-delegate').innerHTML = '';
@@ -277,7 +269,6 @@
                 document.getElementById(`list-${issue.quad}`).innerHTML += cardHtml;
             });
 
-            // 카운트 업데이트
             document.getElementById('count-do').innerText = count.do;
             document.getElementById('count-schedule').innerText = count.schedule;
             document.getElementById('count-delegate').innerText = count.delegate;
@@ -287,7 +278,7 @@
         function clearAllIssues() {
             if(confirm("모든 문제 데이터를 삭제하시겠습니까? 이 작업은 되돌릴 수 없습니다.")) {
                 issues = [];
-                localStorage.removeItem('xray_issues');
+                localStorage.removeItem('xray_issues_v2');
                 renderMatrix();
                 showToast("모든 데이터가 초기화되었습니다.");
             }
